@@ -1,0 +1,233 @@
+[
+  // =========================================
+  // Window/Group Navigation (like Tmux panes)
+  // =========================================
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "!terminalFocus"
+  },
+  // =========================================
+  // Terminal Navigation
+  // =========================================
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus && editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  // Navigate between terminal splits
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  // =========================================
+  // Resize Groups (like Alt+hjkl in Tmux)
+  // =========================================
+  {
+    "key": "alt+h",
+    "command": "workbench.action.decreaseViewWidth"
+  },
+  {
+    "key": "alt+l",
+    "command": "workbench.action.increaseViewWidth"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.decreaseViewHeight"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.increaseViewHeight"
+  },
+  // =========================================
+  // Tab Navigation (like Tmux windows)
+  // =========================================
+  {
+    "key": "alt+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "alt+2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "alt+3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "alt+4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "alt+5",
+    "command": "workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "alt+6",
+    "command": "workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "alt+7",
+    "command": "workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "alt+8",
+    "command": "workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "alt+9",
+    "command": "workbench.action.openEditorAtIndex9"
+  },
+  // =========================================
+  // Split Management (matching Neovim leader keys)
+  // =========================================
+  {
+    "key": "ctrl+w v",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+w s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+w c",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+w o",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "editorTextFocus"
+  },
+  // =========================================
+  // Terminal Splits (like Tmux)
+  // =========================================
+  {
+    "key": "ctrl+a |",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+a _",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+a c",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+a x",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  // =========================================
+  // Quick Actions
+  // =========================================
+  // Command palette (like telescope)
+  {
+    "key": "space space",
+    "command": "workbench.action.showCommands",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // File search
+  {
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // Global search
+  {
+    "key": "space f g",
+    "command": "workbench.action.findInFiles",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // File explorer
+  {
+    "key": "space e",
+    "command": "workbench.view.explorer",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // Toggle sidebar
+  {
+    "key": "space shift+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // =========================================
+  // Zen Mode / Focus
+  // =========================================
+  {
+    "key": "ctrl+a m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "space z",
+    "command": "workbench.action.toggleZenMode",
+    "when": "neovim.mode == 'normal' && editorTextFocus"
+  },
+  // =========================================
+  // Additional Useful Bindings
+  // =========================================
+  // Quick save
+  {
+    "key": "cmd+s",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus && !isMac"
+  },
+  // Toggle terminal
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  // Clear terminal
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  // Navigate back/forward
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForward"
+  }
+]

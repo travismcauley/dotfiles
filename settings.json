@@ -1,0 +1,185 @@
+{
+  // =========================================
+  // Neovim Extension Settings
+  // =========================================
+  // Path to Neovim executable
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.win32": "nvim.exe",
+  // Use init.lua from your dotfiles
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
+  // Let VSCode handle these keys (not Neovim)
+  "vscode-neovim.handleKeys": {
+    "<C-d>": true, // Multi-cursor in VSCode
+    "<C-s>": false, // Save handled by VSCode
+    "<C-z>": false, // Undo handled by VSCode
+    "<C-p>": false, // Quick open
+    "<C-`>": false, // Terminal toggle
+    "<C-n>": false, // New file
+    "<C-w>": false, // Close tab
+    // Navigation keys - let Neovim handle these for consistency
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true
+  },
+  // =========================================
+  // Terminal Settings for Tmux
+  // =========================================
+  // Use tmux as default terminal
+  "terminal.integrated.defaultProfile.osx": "tmux",
+  "terminal.integrated.defaultProfile.linux": "tmux",
+  // Tmux profiles
+  "terminal.integrated.profiles.osx": {
+    "tmux": {
+      "path": "tmux",
+      "args": ["new-session", "-A", "-s", "vscode"],
+      "icon": "terminal-tmux"
+    },
+    "zsh": {
+      "path": "zsh",
+      "icon": "terminal"
+    }
+  },
+  "terminal.integrated.profiles.linux": {
+    "tmux": {
+      "path": "tmux",
+      "args": ["new-session", "-A", "-s", "vscode"],
+      "icon": "terminal-tmux"
+    },
+    "bash": {
+      "path": "bash",
+      "icon": "terminal"
+    }
+  },
+  // Terminal appearance
+  "terminal.integrated.fontFamily": "JetBrains Mono, MesloLGS NF, monospace",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  // Terminal behavior
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.detectLocale": "auto",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  // =========================================
+  // Editor Settings to Match Neovim
+  // =========================================
+  // Font settings
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 12,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.5,
+  // Cursor and editing
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "blink",
+  "editor.lineNumbers": "relative",
+  "editor.renderLineHighlight": "all",
+  // Indentation
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  // Wrapping and scrolling
+  "editor.wordWrap": "off",
+  "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  // Suggestions and autocomplete
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  // Formatting
+  "editor.formatOnSave": false, // Control this per-project
+  "editor.formatOnPaste": false,
+  // Minimap
+  "editor.minimap.enabled": false, // Cleaner like Neovim
+  // Breadcrumbs
+  "breadcrumbs.enabled": true,
+  // =========================================
+  // Vim Settings (for VSCode Neovim)
+  // =========================================
+  "vim.leader": " ",
+  "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  // =========================================
+  // File Explorer Settings
+  // =========================================
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  // =========================================
+  // Workbench Settings
+  // =========================================
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": true,
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.list.automaticKeyboardNavigation": false,
+  // =========================================
+  // Search Settings
+  // =========================================
+  "search.useIgnoreFiles": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.venv": true,
+    "**/venv": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  // =========================================
+  // Git Settings
+  // =========================================
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  // =========================================
+  // Theme Settings (to match Tokyo Night)
+  // =========================================
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.iconTheme": "material-icon-theme",
+  // =========================================
+  // Language-Specific Settings
+  // =========================================
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  // =========================================
+  // Extension Recommendations
+  // =========================================
+  "extensions.ignoreRecommendations": false
+}
