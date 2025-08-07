@@ -1,0 +1,40 @@
+# Ghostty Configuration
+# Theme and appearance
+theme = tokyo-night
+font-family = JetBrains Mono
+font-style = Bold Italic
+font-size = 12
+font-feature = calt
+font-feature = liga
+font-feature = dlig
+
+cursor-style = bar
+cursor-style-blink = true
+scrollback-limit = 10000
+
+window-decoration = false
+window-padding-x = 3
+window-padding-y = 0
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# Minimal keybindings - let tmux handle multiplexing
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_tab
+keybind = cmd+1=goto_tab:1
+keybind = cmd+2=goto_tab:2
+keybind = cmd+3=goto_tab:3
+keybind = cmd+4=goto_tab:4
+keybind = cmd+5=goto_tab:5
+keybind = cmd+shift+left=goto_tab:previous
+keybind = cmd+shift+right=goto_tab:next
+
+# Copy/Paste
+copy-on-select = true
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# Performance
+gtk-single-instance = true

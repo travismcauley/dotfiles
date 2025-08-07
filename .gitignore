@@ -6,6 +6,13 @@ bin/**
 docker/.docker/sbom/*
 .DS_STORE
 
+# Tmux
+.config/tmux/plugins/
+.config/tmux/resurrect/
+
+# Neovim
+.config/nvim/lazy-lock.json
+
 # luarocks build files
 *.src.rock
 *.zip

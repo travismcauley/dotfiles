@@ -1,5 +1,66 @@
+# ===============================================
+# TMUX ALIASES
+# ===============================================
+
+# Session management
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tk='tmux kill-session -t'
+alias tka='tmux kill-server'
+
+# Quick session creation
+alias dev='tmux new -A -s dev -c ~/projects'
+alias main='tmux new -A -s main'
+
+# Function to create a new tmux session for current project
+tmux-project() {
+    local session_name=${1:-$(basename $(pwd))}
+    tmux new -A -s "$session_name" -c "$(pwd)"
+}
+alias tp='tmux-project'
+
+
+# Optional: Auto-attach to tmux on terminal start (uncomment if desired)
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t main || tmux new -s main
+# fi
+
+# ===============================================
+# DEVELOPMENT ENVIRONMENT HELPERS
+# ===============================================
+
+# Open project in tmux with predefined layout
+tmux-dev-layout() {
+    local session_name="${1:-dev}"
+    
+    # Create new session with editor window
+    tmux new-session -d -s "$session_name" -n editor
+    tmux send-keys -t "$session_name:editor" 'nvim .' C-m
+    
+    # Create server window with splits
+    tmux new-window -t "$session_name" -n server
+    tmux split-window -t "$session_name:server" -h -p 40
+    
+    # Create git window
+    tmux new-window -t "$session_name" -n git
+    tmux send-keys -t "$session_name:git" 'git status' C-m
+    
+    # Select first window and attach
+    tmux select-window -t "$session_name:editor"
+    tmux attach-session -t "$session_name"
+}
+alias tdev='tmux-dev-layout'
+
+# Kill all tmux sessions except the current one
+tmux-kill-others() {
+    local current_session=$(tmux display-message -p '#S')
+    tmux list-sessions -F '#{session_name}' | grep -v "^$current_session$" | xargs -I {} tmux kill-session -t {}
+    echo "Killed all sessions except: $current_session"
+}
+alias tko='tmux-kill-others'
+
 # Shortcuts
-alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
 alias path='echo -e ${PATH//:/\\n}'
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias uuidgen="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
@@ -7,11 +68,6 @@ alias uuidgen="uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy"
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 alias reloadshell="omz reload"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
@@ -23,13 +79,6 @@ alias la="ls -lAF ${colorflag}"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd $HOME/code"
-alias rback="cd $HOME/code/rittenlabs/valinor/backend"
-alias rfront="cd $HOME/code/rittenlabs/valinor/frontend"
-
-# Python
-alias pyls="alias | grep '^py'"
-alias pyinit='python3 -m venv .venv && echo "Virtualenv created in .venv/" && source .venv/bin/activate'
-alias pyremove='deactivate 2>/dev/null; rm -rf .venv && echo ".venv removed."'
 
 # Git
 alias gs="git status"
